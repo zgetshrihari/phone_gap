@@ -8,21 +8,29 @@
 			{
 				var user_name= $("#username").val();
 				var password= $("#password").val();
-				
+				/*
 				$.post("https://rem-fit.com/offline_2_5/offline_web_service_2_5/login",{username:user_name,password:password},function(data){
 					alert(" Login Sucessfulle ");
 					//windows.href("another.html");
 				});
-				
+				*/
 				$.ajax({
 					type:"POST",
 					dataType:"json",
 					url:"https://rem-fit.com/offline_2_5/offline_web_service_2_5/login",
 					crossDomain: true,
-					data:{username:user_name,password:password}				
-				}).done(function(data){
-					alert(" second one ");
-				});
+					data:{username:user_name,password:password},
+					error: function(xhr, status, exception){
+						$("#msg").text("Error: "+status+" - "+exception);
+
+					},
+					success: function(data){
+						$("#msg").text("Got JSONP response");
+						alert(data);
+
+					}
+					
+					});
 			}
 			
 			function login_confirm()
