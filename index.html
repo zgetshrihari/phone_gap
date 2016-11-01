@@ -2,21 +2,49 @@
 	<head>
 		<title> First Basic type</title>
 		<link rel="stylesheet" media="screen" href="css/home.css">
+		<script src="js/jquery-1.10.2.js" ></script>
 		<script type="text/javascript">
 			function show_alert()
 			{
-				alert(" just a message ");
+				var user_name= $("#username").val();
+				var password= $("#password").val();
+				
+				$.post("https://rem-fit.com/offline_2_5/offline_web_service_2_5/login",{username:user_name,password:password},function(data){
+					alert(" Login Sucessfulle ");
+					//windows.href("another.html");
+				});
+				
+				$.ajax({
+					type:"POST",
+					dataType:"json",
+					url:"https://rem-fit.com/offline_2_5/offline_web_service_2_5/login",
+					crossDomain: true,
+					data:{username:user_name,password:password}				
+				}).done(function(data){
+					alert(" second one ");
+				});
 			}
+			
+			function login_confirm()
+			{
+			
+			}
+			
 		</script>
 	</head>
 	<body>
 		<div id="main" style="color:green">
-			this is div 11111
+			<label>Username</label>
+			<input type="text" name="username" id="username" />
 		</div>
-		<input type="submit" name="cool" value="Submit button" />
-		<a href="another.html"> Register 2222</a>
+
+		<div id="main_1" style="color:green">
+			<label>Password</label>
+			<input type="password" name="password" id="password" />
+		</div>
+		<a href="another.html">Sign Up</a>
 		
-		<a href="javascript:void(0);" onclick="show_alert();"> working </a>
+		<a href="javascript:void(0);" onclick="show_alert();"> Login </a>
 		
 	</body>
 	
