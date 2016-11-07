@@ -4,6 +4,10 @@
 		<link rel="stylesheet" media="screen" href="css/home.css">
 		<script src="js/jquery-1.10.2.js" ></script>
 		<script type="text/javascript">
+		function logResults(json){
+				alert(" this is just the correct ");
+				}
+
 			function show_alert()
 			{
 				var user_name= $("#username").val();
@@ -25,7 +29,7 @@
 
 						}
 					
-					});*/
+					});
 					 $.ajax({
 							 type: "POST",
 							 url:"https://rem-fit.com/test_me/chk_ajax_call",
@@ -37,12 +41,26 @@
 								 alert(data);
 							 }
 							 });
+							 
+					*/		 
+							 
+				alert(" started ");
+						$.ajax({
+						  url: "https://api.github.com/users/jeresig",
+						  dataType: "jsonp",
+						  jsonpCallback: "logResults"
+						});
+						
+						alert(" ended ");
+
 			}
 			
 			function login_confirm()
 			{
 			
 			}
+			
+			
 			
 		</script>
 	</head>
